@@ -53,25 +53,37 @@ public class MainWindow extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(new GridLayout(0, 1, 0, 0));
-
 		
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-
 		contentPane.add(tabbedPane);
 		
-		JFileChooser fileChooser = new JFileChooser();
-		fileChooser.setToolTipText("Selezionare il csv da inviare a GLS");
-		fileChooser.setFileSelectionMode(0);
-		fileChooser.setDialogTitle("Seleziona il CSV");
-		fileChooser.setAcceptAllFileFilterUsed(false);
-		tabbedPane.addTab("Lista spedizioni", null, fileChooser, null);
+		JPanel panel = new JPanel();
+		tabbedPane.addTab("CSV select", null, panel, null);
+		GridBagLayout gbl_panel = new GridBagLayout();
+		gbl_panel.columnWidths = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+		gbl_panel.rowHeights = new int[]{0, 0};
+		gbl_panel.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gbl_panel.rowWeights = new double[]{0.0, Double.MIN_VALUE};
+		panel.setLayout(gbl_panel);
 		
 		JLabel label = new JLabel("Sistema di Generazione\nTaffi -> GLX");
-		tabbedPane.addTab("New tab", null, label, null);
 		label.setVerticalAlignment(SwingConstants.TOP);
 		label.setHorizontalAlignment(SwingConstants.CENTER);
 		label.setFont(new Font("Lucida Grande", Font.PLAIN, 28));
-		FileFilter filter = new FileNameExtensionFilter("CSV Taffi file", "csv");
+		GridBagConstraints gbc_label = new GridBagConstraints();
+		gbc_label.insets = new Insets(0, 0, 0, 5);
+		gbc_label.gridx = 7;
+		gbc_label.gridy = 0;
+		panel.add(label, gbc_label);
+		
+		JPanel panel_1 = new JPanel();
+		tabbedPane.addTab("Lista records da inviare", null, panel_1, null);
+		GridBagLayout gbl_panel_1 = new GridBagLayout();
+		gbl_panel_1.columnWidths = new int[]{0};
+		gbl_panel_1.rowHeights = new int[]{0};
+		gbl_panel_1.columnWeights = new double[]{Double.MIN_VALUE};
+		gbl_panel_1.rowWeights = new double[]{Double.MIN_VALUE};
+		panel_1.setLayout(gbl_panel_1);
 	}
 
 }
